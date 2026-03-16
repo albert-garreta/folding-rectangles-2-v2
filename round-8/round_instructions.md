@@ -1,0 +1,1 @@
+Please from now on try to obtain a result for the case when the rate is smaller than 1/4, rather than exactly 1/4
