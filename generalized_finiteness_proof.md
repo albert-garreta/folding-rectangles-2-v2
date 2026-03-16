@@ -237,3 +237,105 @@ Nevertheless, the algebraic structure is identical: if one substitutes $\delta =
 - $\beta_* = (95 - 8\sqrt{79})/64 \approx 0.3734$.
 
 This confirms that the proof technique generalizes the original argument, even though the parametrization $\delta = \sqrt{r}$ yields a different (and in some regimes more restrictive) rate condition.
+
+---
+
+## Example Parameter Regimes
+
+For a given rate $r$, the proximity parameter $\delta'$ must satisfy two constraints simultaneously:
+1. $\delta' < \sqrt{r}/2$ (Lemma 2),
+2. $\beta_*(\delta') > \sqrt{r}$, equivalently $r < \beta_*(\delta')^2$ (existence of valid threshold $\beta$).
+
+Since $\beta_*(\delta')$ is decreasing in $\delta'$, constraint (2) imposes an upper bound on $\delta'$ that depends on $r$. The following table summarizes the rate threshold $r_{\max}(\delta') = \beta_*(\delta')^2$ for several values of $\delta'$.
+
+### Table of Rate Thresholds
+
+| $\delta'$ | $A = 1 - 2\delta'$ | $\beta_*(\delta')$ | $r_{\max} = \beta_*^2$ |
+|:---:|:---:|:---:|:---:|
+| $0$ (limiting) | $1$ | $(3-\sqrt{5})/2 \approx 0.3820$ | $(7-3\sqrt{5})/2 \approx 0.1459$ |
+| $0.005$ | $0.99$ | $\approx 0.3764$ | $\approx 0.1417$ |
+| $0.01$ | $0.98$ | $\approx 0.3709$ | $\approx 0.1376$ |
+| $1/32 = 0.03125$ | $15/16$ | $(23-4\sqrt{19})/16 \approx 0.3478$ | $\approx 0.1210$ |
+| $1/16 = 0.0625$ | $7/8$ | $(11/4-\sqrt{9/2})/2 \approx 0.3143$ | $\approx 0.0988$ |
+| $0.1$ | $0.8$ | $\approx 0.2753$ | $\approx 0.0758$ |
+
+### Worked Example 1: $r = 1/16$, $\delta' = 1/32$
+
+**Setting.** Rate $r = 1/16 = 0.0625$, proximity $\delta' = 1/32 = 0.03125$.
+
+**Constraint verification.**
+- $\delta' = 1/32 < 1/8 = \sqrt{r}/2$. $\checkmark$
+- $\beta_*(\delta') = (23 - 4\sqrt{19})/16 \approx 0.3478$, so $\beta_*^2 \approx 0.1210 > 0.0625 = r$. $\checkmark$
+
+**Derived constants.**
+- $\delta = \sqrt{r} = 1/4$, $A = 15/16$, $T = (1 - 1/32)N = 31N/32$.
+
+**Choice of threshold.** Take $\beta = 3/10$, which lies in $(\sqrt{r},\, \beta_*) = (0.25,\, 0.3478)$.
+
+**Bound components.**
+- $M_{\mathrm{aff}} = \lfloor 2/(1/4 - 1/32) \rfloor = \lfloor 64/7 \rfloor = 9$.
+- $L_r(3/10) = \dfrac{3/10 - 1/16}{9/100 - 1/16} = \dfrac{19/80}{11/400} = \dfrac{95}{11} \approx 8.64$, so $\lfloor L_r \rfloor = 8$.
+- Type A bound: $(M_{\mathrm{aff}} - 1)\lfloor L_r \rfloor = 8 \cdot 8 = 64$.
+- $A - 2\beta = 15/16 - 3/5 = 27/80$, $(A - \beta)^2 - \beta = (51/80)^2 - 3/10 = 681/6400$.
+- Fractional Johnson bound: $\dfrac{27/80}{681/6400} = \dfrac{2160}{681} \approx 3.17$, so $\lfloor J \rfloor = 3$.
+- Type B bound: $(64 + 1) \cdot 3 = 195$.
+
+$$\boxed{|X_R| \le 1 + 64 + 195 = 260.}$$
+
+### Worked Example 2: $r = 1/64$, $\delta' = 1/32$
+
+**Setting.** Rate $r = 1/64 \approx 0.0156$, proximity $\delta' = 1/32$.
+
+**Constraint verification.**
+- $\delta' = 1/32 < 1/16 = \sqrt{r}/2$. $\checkmark$
+- $\beta_*^2 \approx 0.1210 > 0.0156$. $\checkmark$
+
+**Derived constants.**
+- $\delta = \sqrt{r} = 1/8$, $A = 15/16$.
+
+**Choice of threshold.** Take $\beta = 1/4$.
+
+**Bound components.**
+- $M_{\mathrm{aff}} = \lfloor 2/(1/8 - 1/32) \rfloor = \lfloor 64/3 \rfloor = 21$.
+- $L_r(1/4) = \dfrac{1/4 - 1/64}{1/16 - 1/64} = \dfrac{15/64}{3/64} = 5$.
+- Type A bound: $20 \cdot 5 = 100$.
+- $A - 2\beta = 15/16 - 1/2 = 7/16$, $(A-\beta)^2 - \beta = (11/16)^2 - 1/4 = 121/256 - 64/256 = 57/256$.
+- Fractional Johnson bound: $\dfrac{7/16}{57/256} = \dfrac{112}{57} \approx 1.96$, so $\lfloor J \rfloor = 1$.
+- Type B bound: $(100 + 1) \cdot 1 = 101$.
+
+$$\boxed{|X_R| \le 1 + 100 + 101 = 202.}$$
+
+### Worked Example 3: Near-threshold regime, $r = 0.13$, $\delta' = 0.005$
+
+**Setting.** Rate $r = 0.13$, proximity $\delta' = 0.005$.
+
+**Constraint verification.**
+- $\delta' = 0.005 < 0.1803 \approx \sqrt{r}/2$. $\checkmark$
+- $A = 0.99$, $\beta_* \approx 0.3764$, $\beta_*^2 \approx 0.1417 > 0.13 = r$. $\checkmark$
+
+**Derived constants.**
+- $\delta = \sqrt{0.13} \approx 0.3606$.
+
+**Choice of threshold.** Take $\beta = 0.37$, which lies in $(\sqrt{r},\, \beta_*) \approx (0.3606,\, 0.3764)$.
+
+**Bound components.**
+- $M_{\mathrm{aff}} = \lfloor 2/(0.3606 - 0.005) \rfloor = \lfloor 5.625 \rfloor = 5$.
+- $L_r(0.37) = \dfrac{0.37 - 0.13}{0.1369 - 0.13} = \dfrac{0.24}{0.0069} \approx 34.78$, so $\lfloor L_r \rfloor = 34$.
+- Type A bound: $4 \cdot 34 = 136$.
+- $A - 2\beta = 0.99 - 0.74 = 0.25$, $(A - \beta)^2 - \beta = 0.62^2 - 0.37 = 0.0144$.
+- Fractional Johnson bound: $0.25/0.0144 \approx 17.36$, so $\lfloor J \rfloor = 17$.
+- Type B bound: $(136 + 1) \cdot 17 = 2329$.
+
+$$\boxed{|X_R| \le 1 + 136 + 2329 = 2466.}$$
+
+### Discussion
+
+Several trends are visible from these examples:
+
+1. **Low rates yield tighter bounds.** At rate $r = 1/64$ (Example 2), the bound is $202$; at $r = 1/16$ (Example 1), it grows to $260$. The list-decoding term $L_r(\beta)$ is the main beneficiary of lower rates, since the gap $\beta^2 - r$ is larger.
+
+2. **Near-threshold rates cause blow-up.** In Example 3 ($r = 0.13$, close to the limiting threshold $\approx 0.146$), the available window $(\sqrt{r},\, \beta_*)$ for $\beta$ is narrow. This forces $\beta$ close to $\sqrt{r}$, inflating $L_r(\beta)$, and close to $\beta_*$, inflating the Johnson factor. The bound degrades to $O(1/\varepsilon^2)$ where $\varepsilon$ measures the gap to the threshold.
+
+3. **The bound is not optimized over $\beta$.** For each example, $\beta$ was chosen for expository clarity. In principle, one could minimize the total bound over $\beta \in (\sqrt{r}, \beta_*)$, trading off the Type A contribution (decreasing in $\beta$) against the Type B contribution (increasing as $\beta \to \beta_*$).
+
+4. **The affine-line multiplicity $M_{\mathrm{aff}}$ is controlled by $\sqrt{r} - \delta'$.** Choosing $\delta'$ very small relative to $\sqrt{r}$ keeps $M_{\mathrm{aff}}$ moderate, at the cost of requiring a finer agreement threshold $T \approx N$.
